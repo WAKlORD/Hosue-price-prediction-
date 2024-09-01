@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Real Estate Price Prediction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="bg-white bg-opacity-75 p-10 rounded-lg flex items-center justify-center min-h-screen bg-none bg-cover bg-center" style="background-image: url('../static/background2.jpg')"> <!-- Improved readability -->
+        <h2 class="font-bold -mt-96 underline ">Mumbai House Price Prediction</h2>
+        <form method="POST">
+            <label class="font-bold" for="location">Location:</label>
+            <select name="location" class="rounded-full text-center" id="location">
+                {% for loc in locations %}
+                <option value="{{ loc }}" {% if loc == location %}selected{% endif %}>{{ loc }}</option>
+                {% endfor %}
+            </select><br><br>
+            
+            <label class="font-bold" for="area">Area (in Sq.Ft.):</label>
+            <input type="text" class="rounded-full text-center " name="area" value="{{ area }}"><br><br>
+            
+            <label class="font-bold" for="bedrooms">No. of Bedrooms:</label>
+            <input type="number" id="bedrooms" class="rounded-full text-center" name="bedrooms" min="1" value="{{ bedrooms }}"><br><br><br>
+            <div class="flex items-center justify-center">
+                <input type="submit" class="cursor-pointer rounded-full bg-sky-200 hover:bg-sky-400 p-1.5 mb-10" value="Make Prediction">
+            </div>
+        </form>
+        
+        {% if prediction %}
+        <h3 class="text-white">For Location: {{ location }}</h3>
+        <h3 class="text-white">Area: {{ area }} SqFt.</h3>
+        <h3 class="text-white">No. of Bedrooms: {{ bedrooms }}</h3>
+        <h3 class="text-white">Predicted Price: {{ prediction }}</h3>
+        <script>
+            <alert>
+            </alert>
+        </script>
+        {% endif %}
+        </div>
+
+    <footer class="mt-auto p-4 bg-gray-500 text-white text-center">
+        <p>ARYAN SINGH (0901AM211015)<br>Contact me after 20; I have Jummas going on. Alhumduillah</p>
+    </footer>
+</body>
+</html>
